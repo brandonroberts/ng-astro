@@ -6,7 +6,8 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "postinstall": "ngcc --properties es2015 browser module main"
+    "postinstall": "ngcc --properties es2015 browser module main",
+    "copy-ng": "cp -R ./renderer-angular ./node_modules/@astrojs/"
   },
   "private": true,
   "dependencies": {
@@ -18,6 +19,7 @@
     "@angular/platform-browser": "^13.0.0",
     "@angular/platform-browser-dynamic": "^13.0.0",
     "@angular/router": "^13.0.0",
+    "@nguniversal/common": "^13.0.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
@@ -30,6 +32,7 @@
     "@angular/cli": "~13.0.0",
     "@angular/compiler-cli": "^13.0.0",
     "@angular/language-service": "^13.0.0",
+    "@angular/platform-server": "^13.1.0",
     "@nrwl/angular": "^13.3.0",
     "@nrwl/cli": "13.3.0",
     "@nrwl/cypress": "13.3.0",
