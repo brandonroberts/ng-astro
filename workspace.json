@@ -1,4 +1,7 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "blog": "apps/blog",
+    "blog-e2e": "apps/blog-e2e"
+  }
 }
