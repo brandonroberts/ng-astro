@@ -1,7 +1,20 @@
 ---
-import { HelloComponent } from '../components/hello.component.ts';
+import { HelloComponent, HelloServerComponent } from '../components/hello.component.ts';
 ---
+
+<html>
+<head>
+</head>
+<body>
 
 <h2>About Me</h2>
 
-<HelloComponent />
+{import.meta.env.SSR ? <HelloServerComponent /> : <HelloComponent />}
+
+<script src="/my-app/runtime.js" type="module" hoist></script>
+<script src="/my-app/polyfills.js" type="module" hoist></script>
+<script src="/my-app/vendor.js" type="module" hoist></script>
+<script src="/my-app/main.js" type="module" hoist></script>
+
+</body>
+</html>

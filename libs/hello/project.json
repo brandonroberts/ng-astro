@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/hello",
+  "sourceRoot": "libs/hello/src",
+  "prefix": "nxastro",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/hello"],
+      "options": {
+        "jestConfig": "libs/hello/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/hello/src/**/*.ts",
+          "libs/hello/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

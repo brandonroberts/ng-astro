@@ -5,11 +5,13 @@
   "type": "module",
   "exports": {
     ".": "./index.js",
+    "./client.js": "./client.js",
     "./server.js": "./server.js",
     "./package.json": "./package.json"
   },
   "files": [
     "index.js",
+    "client.js",
     "server.js"
   ],
   "dependencies": {
