@@ -1,4 +1,4 @@
 import '@angular/compiler';
-import { HelloComponent, HelloServerComponent } from '@nxastro/hello';
+import { HelloComponent } from '@nxastro/hello';
 
-export { HelloComponent, HelloServerComponent };
+export { HelloComponent };

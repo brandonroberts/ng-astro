@@ -1,16 +1,5 @@
 export default {
   name: '@astrojs/renderer-angular',
+  client: './client.js',
   server: './server.js',
-  external: [
-    '@nguniversal/common/engine',
-    '@angular/platform-server',
-    '@angular/animations',
-    '@angular/common',
-    '@angular/compiler',
-    '@angular/core',
-    '@angular/platform-browser',
-    '@angular/platform-browser-dynamic',
-    'rxjs',
-    'zone.js'
-  ],
 };

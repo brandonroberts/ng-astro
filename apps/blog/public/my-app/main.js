@@ -49,20 +49,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const ngComponents = {
+    'app-hello': _nxastro_hello__WEBPACK_IMPORTED_MODULE_0__.HelloComponent
+};
 class AppModule {
+    constructor(ngZone) {
+        this.ngZone = ngZone;
+    }
     ngDoBootstrap(app) {
-        const hello = document.querySelector('app-hello');
-        if (hello) {
-            app.bootstrap(_nxastro_hello__WEBPACK_IMPORTED_MODULE_0__.HelloComponent);
-        }
+        window.ngBootstrap = (cmp) => {
+            const ngCmp = ngComponents[cmp];
+            if (ngCmp) {
+                this.ngZone.run(() => {
+                    app.bootstrap(ngCmp);
+                });
+            }
+        };
     }
 }
-AppModule.ɵfac = function AppModule_Factory(t) { return new (t || AppModule)(); };
+AppModule.ɵfac = function AppModule_Factory(t) { return new (t || AppModule)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_3__.NgZone)); };
 AppModule.ɵmod = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineNgModule"]({ type: AppModule });
 AppModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjector"]({ providers: [], imports: [[
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__.BrowserModule,
+            _nxastro_hello__WEBPACK_IMPORTED_MODULE_0__.HelloComponentModule
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent, _nx_welcome_component__WEBPACK_IMPORTED_MODULE_2__.NxWelcomeComponent, _nxastro_hello__WEBPACK_IMPORTED_MODULE_0__.HelloComponent], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__.BrowserModule] }); })();
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent, _nx_welcome_component__WEBPACK_IMPORTED_MODULE_2__.NxWelcomeComponent], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__.BrowserModule,
+        _nxastro_hello__WEBPACK_IMPORTED_MODULE_0__.HelloComponentModule] }); })();
 
 
 /***/ }),
@@ -418,26 +430,36 @@ _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__.platformBrowser()
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "HelloComponent": () => (/* reexport safe */ _lib_hello_module__WEBPACK_IMPORTED_MODULE_0__.HelloComponent)
+/* harmony export */   "HelloComponent": () => (/* reexport safe */ _lib_hello_component__WEBPACK_IMPORTED_MODULE_0__.HelloComponent),
+/* harmony export */   "HelloComponentModule": () => (/* reexport safe */ _lib_hello_component__WEBPACK_IMPORTED_MODULE_0__.HelloComponentModule),
+/* harmony export */   "HelloServerComponentModule": () => (/* reexport safe */ _lib_hello_component__WEBPACK_IMPORTED_MODULE_0__.HelloServerComponentModule)
 /* harmony export */ });
-/* harmony import */ var _lib_hello_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/hello.module */ 8220);
+/* harmony import */ var _lib_hello_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/hello.component */ 4818);
 
 
 
 /***/ }),
 
-/***/ 8220:
-/*!********************************************!*\
-  !*** ./libs/hello/src/lib/hello.module.ts ***!
-  \********************************************/
+/***/ 4818:
+/*!***********************************************!*\
+  !*** ./libs/hello/src/lib/hello.component.ts ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "HelloComponent": () => (/* binding */ HelloComponent)
+/* harmony export */   "HelloComponent": () => (/* binding */ HelloComponent),
+/* harmony export */   "HelloComponentModule": () => (/* binding */ HelloComponentModule),
+/* harmony export */   "HelloServerComponentModule": () => (/* binding */ HelloServerComponentModule)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 4001);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ 8267);
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ 6219);
+/* harmony import */ var _angular_platform_server__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-server */ 5218);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 4001);
+
+
+
+
 
 
 function HelloComponent_p_2_Template(rf, ctx) { if (rf & 1) {
@@ -449,12 +471,19 @@ class HelloComponent {
     constructor() {
         this.show = false;
     }
+    static forRender() {
+        return {
+            document: '<app-hello></app-hello>',
+            bootstrap: HelloServerComponentModule
+        };
+    }
     ngOnInit() {
     }
     toggle() {
         this.show = !this.show;
     }
 }
+HelloComponent.el = 'app-hello';
 HelloComponent.ɵfac = function HelloComponent_Factory(t) { return new (t || HelloComponent)(); };
 HelloComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HelloComponent, selectors: [["app-hello"]], decls: 5, vars: 1, consts: [[4, "ngIf"], [3, "click"]], template: function HelloComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
@@ -469,6 +498,24 @@ HelloComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__[
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.show);
     } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_1__.NgIf], encapsulation: 2 });
+class HelloComponentModule {
+}
+HelloComponentModule.ɵfac = function HelloComponentModule_Factory(t) { return new (t || HelloComponentModule)(); };
+HelloComponentModule.ɵmod = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: HelloComponentModule });
+HelloComponentModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ imports: [[
+            _angular_common__WEBPACK_IMPORTED_MODULE_1__.CommonModule
+        ]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](HelloComponentModule, { declarations: [HelloComponent], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__.CommonModule], exports: [HelloComponent] }); })();
+class HelloServerComponentModule {
+}
+HelloServerComponentModule.ɵfac = function HelloServerComponentModule_Factory(t) { return new (t || HelloServerComponentModule)(); };
+HelloServerComponentModule.ɵmod = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: HelloServerComponentModule, bootstrap: [HelloComponent] });
+HelloServerComponentModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ imports: [[
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__.BrowserModule.withServerTransition({ appId: 'app-hello' }),
+            _angular_platform_server__WEBPACK_IMPORTED_MODULE_3__.ServerModule,
+            HelloComponentModule
+        ]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](HelloServerComponentModule, { imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__.BrowserModule, _angular_platform_server__WEBPACK_IMPORTED_MODULE_3__.ServerModule, HelloComponentModule] }); })();
 
 
 /***/ })

@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ServerModule } from '@angular/platform-server';
+import type { RenderOptions } from '@nguniversal/common/engine';
 
 @Component({
   selector: 'app-hello',
@@ -12,7 +16,14 @@ import { Component } from '@angular/core';
 })
 export class HelloComponent {
   show = false;
-  static forRender: any;
+  static forRender(): RenderOptions {
+    return {
+      document: '<app-hello></app-hello>',
+      bootstrap: HelloServerComponentModule
+    };
+  }
+  
+  static el = 'app-hello';
   ngOnInit() {
 
   }
@@ -22,3 +33,27 @@ export class HelloComponent {
   }
 }
 
+@NgModule({
+  imports: [
+    CommonModule
+  ],
+  declarations: [
+    HelloComponent
+  ],
+  exports: [
+    HelloComponent
+  ]
+})
+export class HelloComponentModule { }
+
+@NgModule({
+  imports: [
+    BrowserModule.withServerTransition({ appId: 'app-hello' }),
+    ServerModule,
+    HelloComponentModule
+  ],
+  bootstrap: [
+    HelloComponent
+  ]
+})
+export class HelloServerComponentModule {}
