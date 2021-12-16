@@ -50,18 +50,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const ngComponents = {
-    'app-hello': _nxastro_hello__WEBPACK_IMPORTED_MODULE_0__.HelloComponent
+    [_nxastro_hello__WEBPACK_IMPORTED_MODULE_0__.HelloComponent.selector]: _nxastro_hello__WEBPACK_IMPORTED_MODULE_0__.HelloComponent
 };
 class AppModule {
     constructor(ngZone) {
         this.ngZone = ngZone;
     }
     ngDoBootstrap(app) {
-        window.ngBootstrap = (cmp) => {
-            const ngCmp = ngComponents[cmp];
-            if (ngCmp) {
-                this.ngZone.run(() => {
-                    app.bootstrap(ngCmp);
+        window.ngBootstrap = ({ selector, id }) => {
+            const ngCmp = ngComponents[selector];
+            const els = document.querySelectorAll(`[uid="${id}"]`);
+            if (ngCmp && els.length > 0) {
+                els.forEach(el => {
+                    this.ngZone.run(() => {
+                        app.bootstrap(ngCmp, el || selector);
+                    });
                 });
             }
         };
@@ -69,7 +72,7 @@ class AppModule {
 }
 AppModule.ɵfac = function AppModule_Factory(t) { return new (t || AppModule)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_3__.NgZone)); };
 AppModule.ɵmod = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineNgModule"]({ type: AppModule });
-AppModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjector"]({ providers: [], imports: [[
+AppModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjector"]({ imports: [[
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__.BrowserModule,
             _nxastro_hello__WEBPACK_IMPORTED_MODULE_0__.HelloComponentModule
         ]] });
@@ -471,9 +474,9 @@ class HelloComponent {
     constructor() {
         this.show = false;
     }
-    static forRender() {
+    static forServer() {
         return {
-            document: '<app-hello></app-hello>',
+            document: `<${HelloComponent.selector}></${HelloComponent.selector}>`,
             bootstrap: HelloServerComponentModule
         };
     }
@@ -483,7 +486,7 @@ class HelloComponent {
         this.show = !this.show;
     }
 }
-HelloComponent.el = 'app-hello';
+HelloComponent.selector = 'app-hello';
 HelloComponent.ɵfac = function HelloComponent_Factory(t) { return new (t || HelloComponent)(); };
 HelloComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HelloComponent, selectors: [["app-hello"]], decls: 5, vars: 1, consts: [[4, "ngIf"], [3, "click"]], template: function HelloComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
@@ -511,7 +514,7 @@ class HelloServerComponentModule {
 HelloServerComponentModule.ɵfac = function HelloServerComponentModule_Factory(t) { return new (t || HelloServerComponentModule)(); };
 HelloServerComponentModule.ɵmod = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: HelloServerComponentModule, bootstrap: [HelloComponent] });
 HelloServerComponentModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ imports: [[
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__.BrowserModule.withServerTransition({ appId: 'app-hello' }),
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__.BrowserModule.withServerTransition({ appId: HelloComponent.selector }),
             _angular_platform_server__WEBPACK_IMPORTED_MODULE_3__.ServerModule,
             HelloComponentModule
         ]] });

@@ -16,14 +16,14 @@ import type { RenderOptions } from '@nguniversal/common/engine';
 })
 export class HelloComponent {
   show = false;
-  static forRender(): RenderOptions {
+  static forServer(): RenderOptions {
     return {
-      document: '<app-hello></app-hello>',
+      document: `<${HelloComponent.selector}></${HelloComponent.selector}>`,
       bootstrap: HelloServerComponentModule
     };
   }
   
-  static el = 'app-hello';
+  static selector = 'app-hello';
   ngOnInit() {
 
   }
@@ -48,7 +48,7 @@ export class HelloComponentModule { }
 
 @NgModule({
   imports: [
-    BrowserModule.withServerTransition({ appId: 'app-hello' }),
+    BrowserModule.withServerTransition({ appId: HelloComponent.selector }),
     ServerModule,
     HelloComponentModule
   ],
