@@ -7,7 +7,7 @@
     "build": "nx build",
     "test": "nx test",
     "postinstall": "ngcc --properties es2015 browser module main",
-    "copy-ng": "cp -R ./renderer-angular ./node_modules/@astrojs/",
+    "copy-ng": "cp -R ./integrations-angular ./node_modules/@astrojs/angular/",
     "copy-vite": "cp -R ./node_modules/vite ./node_modules/astro/vendor/"
   },
   "private": true,
@@ -47,7 +47,7 @@
     "@types/node": "14.14.33",
     "@typescript-eslint/eslint-plugin": "~5.3.0",
     "@typescript-eslint/parser": "~5.3.0",
-    "astro": "~0.21.0",
+    "astro": "^1.0.0-beta.19",
     "cypress": "^8.3.0",
     "eslint": "8.2.0",
     "eslint-config-prettier": "8.1.0",

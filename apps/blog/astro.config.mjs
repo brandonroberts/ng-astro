@@ -2,9 +2,11 @@
 // https://docs.astro.build/reference/configuration-reference
 
 // @ts-check
-export default /** @type {import('astro').AstroUserConfig} */ ({
-  dist: '../../dist/apps/blog',
-  renderers: [
-    '@astrojs/renderer-angular'
-  ]
+import { defineConfig } from 'astro/config';
+import angular from '@astrojs/angular';
+
+// https://astro.build/config
+export default defineConfig({
+	// Enable Angular to support Angular components.
+	integrations: [angular()],
 });
