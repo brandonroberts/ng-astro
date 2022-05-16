@@ -7,7 +7,9 @@
     "build": "nx build",
     "test": "nx test",
     "postinstall": "ngcc --properties es2015 browser module main",
-    "copy-ng": "cp -R ./integrations-angular ./node_modules/@astrojs/angular/",
+    "copy-all": "npm run copy-ng && npm run copy-domino",
+    "copy-ng": "cp -R ./integrations-angular/. ./node_modules/@astrojs/angular/",
+    "copy-domino": "cp -R ./libs/domino/ ./node_modules/domino/",
     "copy-vite": "cp -R ./node_modules/vite ./node_modules/astro/vendor/"
   },
   "private": true,
