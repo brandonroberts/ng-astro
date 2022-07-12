@@ -3,10 +3,13 @@
 
 // @ts-check
 import { defineConfig } from 'astro/config';
-import angular from '@astrojs/angular';
+import angular from 'astro-angular';
 
 // https://astro.build/config
 export default defineConfig({
 	// Enable Angular to support Angular components.
 	integrations: [angular()],
+	experimental: {
+		integrations: true
+	}
 });

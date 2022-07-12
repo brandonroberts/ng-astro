@@ -14,7 +14,7 @@ function getViteConfiguration() {
 			include: ['astro-angular/client.js'],
 			exclude: ['astro-angular/server.js'],
 		},
-		plugins: [angular()]
+		plugins: [angular.default()]
 	};
 }
 

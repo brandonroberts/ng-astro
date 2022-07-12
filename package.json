@@ -9,7 +9,7 @@
     "test": "nx test",
     "postinstall": "ngcc --properties es2020 browser module main",
     "copy-all": "npm run copy-ng && npm run copy-domino",
-    "copy-ng": "cp -R ./integrations-angular/. ./node_modules/@astrojs/angular/",
+    "copy-ng": "cp -R ./integrations-angular/. ./node_modules/astro-angular/",
     "copy-domino": "cp -R ./libs/domino/ ./node_modules/domino/",
     "copy-vite": "cp -R ./node_modules/vite ./node_modules/astro/vendor/"
   },
@@ -29,6 +29,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@analogjs/vite-plugin-angular": "latest",
     "@angular-devkit/build-angular": "14.0.5",
     "@angular-eslint/eslint-plugin": "14.0.2",
     "@angular-eslint/eslint-plugin-template": "14.0.2",

@@ -1,4 +1,4 @@
-import 'zone.js/dist/zone';
+import 'zone.js/dist/zone.js';
 import { renderApplication } from '@angular/platform-server';
 
 function check(Component, _props, _children) {

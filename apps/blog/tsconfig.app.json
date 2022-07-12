@@ -1,10 +1,10 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.ng.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "types": []
   },
-  "files": ["../blog/src/components/hello.component.ts"],
+  "files": ["src/components/hello.component.ts"],
   "include": ["src/**/*.d.ts"],
   "exclude": ["**/*.test.ts", "**/*.spec.ts", "jest.config.ts"]
 }

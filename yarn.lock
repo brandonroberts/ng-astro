@@ -10,6 +10,11 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
+"@analogjs/vite-plugin-angular@latest":
+  version "0.2.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@analogjs/vite-plugin-angular/-/vite-plugin-angular-0.2.0-alpha.0.tgz#aeb5466b11e95eb86948fbb853100fd801662c49"
+  integrity sha512-EUsxs4Ma1NGlEfSnfd4vLVWmxwPyuU2AD0vdyr3eCcojn6urTFVYmbZg+qU+9xa4u4qc+2bY9bJCGMTrOyKelw==
+
 "@angular-devkit/architect@0.1400.5":
   version "0.1400.5"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1400.5.tgz#423f7c81b6bac39a9d0ba3c31868de781afe08d0"
