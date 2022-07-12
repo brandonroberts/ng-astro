@@ -6,5 +6,6 @@
     "hello": "libs/hello",
     "my-app": "apps/my-app",
     "my-app-e2e": "apps/my-app-e2e"
-  }
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

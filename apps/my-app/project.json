@@ -1,6 +1,6 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "root": "apps/my-app",
   "sourceRoot": "apps/my-app/src",
   "prefix": "nxastro",
   "targets": {
@@ -81,7 +81,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/my-app"],
       "options": {
-        "jestConfig": "apps/my-app/jest.config.js",
+        "jestConfig": "apps/my-app/jest.config.ts",
         "passWithNoTests": true
       }
     }
