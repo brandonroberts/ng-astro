@@ -1,7 +1,7 @@
 {
-  "name": "@astrojs/angular",
-  "version": "0.0.1",
-  "description": "An Angular renderer for Astro",
+  "name": "astro-angular",
+  "version": "0.0.3",
+  "description": "An Angular integration for Astro",
   "type": "module",
   "exports": {
     ".": "./index.js",
@@ -13,5 +13,11 @@
     "index.js",
     "client.js",
     "server.js"
-  ]
+  ],
+  "dependencies": {
+    "@analogjs/vite-plugin-angular": "^0.2.0-alpha.0"
+  },
+  "peerDependencies": {
+    "@angular-devkit/build-angular": "^14.0.0"
+  }
 }

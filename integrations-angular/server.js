@@ -1,17 +1,24 @@
-import 'zone.js';
-import '@angular/compiler';
-import { CommonEngine } from '@nguniversal/common/engine';
+import 'zone.js/dist/zone';
+import { renderApplication } from '@angular/platform-server';
 
 function check(Component, _props, _children) {
-  return !!Component.forServer;
+  return !!Component['ɵcmp'];
 }
 
-async function renderToStaticMarkup(Component, props, children) {
-  const engine = new CommonEngine();
+async function renderToStaticMarkup(Component, _props, _children) {
+  const appId = getSelector(Component);
+  const document = `<${appId}></${appId}>`;
 
-  const html = await engine.render(Component.forServer());
+  const html = await renderApplication(Component, {
+    appId,
+    document
+  });
 
   return { html };
+}
+
+function getSelector(cmp) {
+  return cmp['ɵcmp'].selectors[0][0];
 }
 
 export default {

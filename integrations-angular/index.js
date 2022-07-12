@@ -1,29 +1,26 @@
-// import type { AstroIntegration, AstroRenderer } from 'astro';
+import angular from '@analogjs/vite-plugin-angular';
 
 function getRenderer() {
 	return {
-		name: '@astrojs/angular',
-		clientEntrypoint: '@astrojs/angular/client.js',
-		serverEntrypoint: '@astrojs/angular/server.js',
+		name: 'astro-angular',
+		clientEntrypoint: 'astro-angular/client.js',
+		serverEntrypoint: 'astro-angular/server.js',
 	};
 }
 
 function getViteConfiguration() {
 	return {
 		optimizeDeps: {
-			include: ['@astrojs/angular/client.js'],
-			exclude: ['@astrojs/angular/server.js'],
+			include: ['astro-angular/client.js'],
+			exclude: ['astro-angular/server.js'],
 		},
-		plugins: [],
-		ssr: {
-			external: [''],
-		},
+		plugins: [angular()]
 	};
 }
 
 export default function () {
 	return {
-		name: '@astrojs/angular',
+		name: 'astro-angular',
 		hooks: {
 			'astro:config:setup': ({ addRenderer, updateConfig }) => {
 				addRenderer(getRenderer());

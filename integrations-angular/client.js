@@ -1,7 +1,8 @@
-export default (element) => {
-  return (Component, props, childHTML) => {
-    if (window.ngBootstrap) {
-        window.ngBootstrap({ selector: Component.selector, id: element.attributes.uid.value });
-    }
+import 'zone.js/dist/zone';
+import { bootstrapApplication } from '@angular/platform-browser';
+
+export default (_element) => {
+  return (Component, _props, _childHTML) => {
+    bootstrapApplication(Component);
   };
 };
